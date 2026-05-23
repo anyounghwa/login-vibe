@@ -12,6 +12,6 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     List<Question> findAllByOrderByIdDesc();
 
     @Override
-    @EntityGraph(attributePaths = "writer")
+    @EntityGraph(attributePaths = {"writer", "answers", "answers.author"})
     Optional<Question> findById(Long id);
 }

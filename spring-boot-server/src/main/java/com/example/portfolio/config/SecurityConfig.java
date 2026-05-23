@@ -3,6 +3,7 @@ package com.example.portfolio.config;
 import com.example.portfolio.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -26,6 +27,9 @@ public class SecurityConfig {
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/predict", "/predict/**").permitAll()
                         .requestMatchers("/members", "/members/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/questions/new").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/questions", "/questions/*").permitAll()
+                        .requestMatchers("/answer/create/**").authenticated()
                         .requestMatchers("/questions", "/questions/**").authenticated()
                         .requestMatchers("/boards", "/boards/**").authenticated()
                         .anyRequest().authenticated()

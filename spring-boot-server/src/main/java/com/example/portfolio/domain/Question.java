@@ -1,6 +1,7 @@
 package com.example.portfolio.domain;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -8,8 +9,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 import java.time.LocalDateTime;
 
 @Entity
@@ -29,6 +34,10 @@ public class Question {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member writer;
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OrderBy("createDate ASC")
+    private List<Answer> answers = new ArrayList<>();
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
@@ -81,6 +90,10 @@ public class Question {
         return writer;
     }
 
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -89,4 +102,3 @@ public class Question {
         return updatedAt;
     }
 }
-
