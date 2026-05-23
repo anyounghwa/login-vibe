@@ -17,3 +17,6 @@ spring:
   thymeleaf:
     cache: false
 
+flask:
+  predict-url: http://localhost:5000/predict
+
