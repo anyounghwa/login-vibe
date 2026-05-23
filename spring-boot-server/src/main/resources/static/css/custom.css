@@ -1,0 +1,78 @@
+:root {
+    --brand-blue: #2563eb;
+    --brand-blue-dark: #1d4ed8;
+    --soft-blue: #eff6ff;
+    --page-bg: #f8fafc;
+    --text-main: #172033;
+}
+
+body {
+    background: var(--page-bg);
+    color: var(--text-main);
+}
+
+.page-section {
+    padding: 64px 0;
+}
+
+.hero-section {
+    background: linear-gradient(180deg, #ffffff 0%, var(--soft-blue) 100%);
+}
+
+.hero-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.feature-card {
+    height: 100%;
+    border: 1px solid #dbeafe;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.12);
+}
+
+.content-card {
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.section-kicker {
+    color: var(--brand-blue);
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.btn-primary {
+    background-color: var(--brand-blue);
+    border-color: var(--brand-blue);
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-blue-dark);
+    border-color: var(--brand-blue-dark);
+}
+
+.table-card {
+    overflow-x: auto;
+}
+
+.pre-line {
+    white-space: pre-line;
+}
+
+@media (max-width: 576px) {
+    .page-section {
+        padding: 40px 0;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+}
+
